@@ -1,5 +1,11 @@
 #+TITLE: D3js based network visualization of emacs packages on Melpa
 
+This is a pre-computed d3js force network of the > 3000 melpa's dependency optimized for panning and zooming.
+
+Packages going to ~;none;~ have no dependency listed.
+
+~emacs24~ is actually ~emacs >24~ with a handfull of packages with ~<24~ or wrong version.
+
 Live demo here: https://fab974.org/blog/melpa-d3js/
 
 * Screenshots
@@ -8,4 +14,11 @@ Live demo here: https://fab974.org/blog/melpa-d3js/
   - with search
 [[file:Images/2016-04-27-searched.png]]
 
+* Compatibility
+| system  | browser                                   |
+|---------+-------------------------------------------|
+| windows | no issue on all majors                    |
+| Linux   | pan and zoom seems broken in firefox 45.0 |
+
+* Other
 Last updated 2015-04-25.
