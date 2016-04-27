@@ -1,0 +1,33 @@
+body { margin: 0; }
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+rect { fill: transparent; }
+.link {
+    stroke: #666;
+    opacity: 1;
+    stroke-width: 1.5px;
+}
+
+.node circle {
+    stroke: #fff;
+    opacity: 0;
+    stroke-width: 1.5px;
+}
+
+.node:not(:hover) .nodetext {
+    display: none;
+}
+
+text {
+    font: 40px serif;
+    opacity: 1;
+    pointer-events: none;
+}
+.ui-widget {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
