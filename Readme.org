@@ -19,6 +19,8 @@ Live demo here: https://fab974.org/blog/melpa-d3js/
 |---------+-------------------------------------------|
 | windows | no issue on all majors                    |
 | Linux   | pan and zoom seems broken in firefox 45.0 |
-
+* per package
+"s" package 2-level depencies example
+[[./Images/s_packagedeps.svg]]
 * Other
 Last updated 2015-04-25.
