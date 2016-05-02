@@ -6,14 +6,17 @@ Packages going to ~;none;~ have no dependency listed.
 
 ~emacs24~ is actually ~emacs >24~ with a handfull of packages with ~<24~ or wrong version.
 
-Live demo here: https://fab974.org/blog/melpa-d3js/
 
 * Screenshots
+** force directed graph
+Live demo here: https://fab974.org/blog/melpa-d3js/
   - default
 [[file:Images/2016-04-27-default.png]]
   - with search
 [[file:Images/2016-04-27-searched.png]]
-
+** cluster graph
+Live demo here: https://fab974.org/blog/melpa-d3js/cluster
+[[file:Images/2016-05-02-09:33:47_1929x1280+0+108.png]]
 * Compatibility
 | system  | browser                                   |
 |---------+-------------------------------------------|

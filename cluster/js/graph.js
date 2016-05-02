@@ -4,11 +4,11 @@ var diameter = 1600,
 
 var cluster = d3.layout.cluster()
     .size([360, innerRadius])
-    //.nodeSize([0.2, innerRadius/3])
+//.nodeSize([0.2, innerRadius/3])
     .sort(null)
     .separation(function separation(a, b) {
         return 10;//(a.parent == b.parent ? 1 :1) / a.depth;
-})
+    })
     .value(function(d) { return d.size/d.size; });
 
 var bundle = d3.layout.bundle();
@@ -22,7 +22,7 @@ var line = d3.svg.line.radial()
 var svg = d3.select("body").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + radius + "," + radius + ")");
 
 var link = svg.append("g").selectAll(".link"),
@@ -35,17 +35,6 @@ d3.json("data/packages.json", function(error, data) {
     var json_nodesp = {"name":"",children:[]};
     var json_links =[];
 
-    // function find(name, data){
-    //     var node = packages[name][0];
-    //     var child = d3.entries(node["children"]);
-
-    //     if(Object.keys(child).length != []) {
-    //         node.children=[];
-    //         child.forEach(function(d){return find(d, packages);});
-    //     }
-
-    //     return node;
-    // }
     function find_node(pname){
         if(json_nodesp.children.some(function(d) {return (d.name === pname);}))
             return json_nodesp.children.filter(function(d) {return (d.name === pname);})[0];
@@ -66,47 +55,6 @@ d3.json("data/packages.json", function(error, data) {
     for (var package in packages) {
         json_nodesp.children.push(find_node(package));
     }
-    // for (var i=0; i<  json_nodesp.children.length; i++){
-    //     if(json_nodesp.children[i].hasOwnProperty("children")){
-    //         var childs=[];
-    //         json_nodesp.children[i].children.forEach(
-    //             function(d){ var a= find_node(d.value);
-    //                          if(typeof a === "undefined"){
-    //                              console.log ("Error 3: " + d.value +" -- " + json_nodesp.children[i].name );
-    //                              console.log (a);
-    //                          }
-    //                          if(Object.keys(a).length ===0 )
-    //                              console.log("Error 2: " + d.value);
-    //                          childs.push(a);});
-    //         json_nodesp.children[i].children=childs;
-    //     }
-    //}
-    // for (var package in packages) {
-    //     if (packages.hasOwnProperty(package)) {
-    //         json_nodes[package]={};
-    //         json_nodes[package].name=package;
-    //         json_nodes[package].parent=json_nodesp;
-    //         var child = d3.entries(packages[package]["children"]);
-
-    //         if(Object.keys(child).length != []) {
-    //             json_nodes[package].children=[];
-    //             child.forEach(function(d){return json_nodes[package].children.push(find_node(d.value));});
-    //         }
-    //         json_nodesp.children.push(json_nodes[package]);
-    //     }
-    // }
-
-    // d3.entries(packages)
-    //     .forEach(
-    //         function(d){
-    //             json_nodes.push({"parent":d.value['name'][0], "children":d.value['children']});});
-    // for ( package in json_nodes) {
-    //     if( Object.keys(packages[package].children).length != 0) {
-    //         json_nodes[package].children.forEach(function(dep){
-    //             json_links.push({"source":json_nodes[package],"target": dep});
-    //         });
-    //     };
-    // };
 
     var plinks = data.links;
     plinks.forEach(function(l){
@@ -121,7 +69,7 @@ d3.json("data/packages.json", function(error, data) {
 
     node = node
         .data(nodes.filter(function(n) { return ( !(n.name==="")); }))
-        //.data(nodes)
+    //.data(nodes)
         .enter().append("text")
         .attr("class", "node")
         .attr("dy", ".31em")
@@ -138,28 +86,28 @@ d3.json("data/packages.json", function(error, data) {
         .attr("class", "link")
         .attr("d", line);
 
-function mouseovered(d) {
-  node
-      .each(function(n) { n.target = n.source = false; });
+    function mouseovered(d) {
+        node
+            .each(function(n) { n.target = n.source = false; });
 
-  link
-      .classed("link--target", function(l) { if (l.target === d) return l.source.source = true; })
-      .classed("link--source", function(l) { if (l.source === d) return l.target.target = true; })
-    .filter(function(l) { return l.target === d || l.source === d; })
-      .each(function() { this.parentNode.appendChild(this); });
+        link
+            .classed("link--target", function(l) { if (l.target === d) return l.source.source = true; })
+            .classed("link--source", function(l) { if (l.source === d) return l.target.target = true; })
+            .filter(function(l) { return l.target === d || l.source === d; })
+            .each(function() { this.parentNode.appendChild(this); });
 
-  node
-      .classed("node--target", function(n) { return n.target; })
-      .classed("node--source", function(n) { return n.source; });
-}
+        node
+            .classed("node--target", function(n) { return n.target; })
+            .classed("node--source", function(n) { return n.source; });
+    }
 
-function mouseouted(d) {
-  link
-      .classed("link--target", false)
-      .classed("link--source", false);
+    function mouseouted(d) {
+        link
+            .classed("link--target", false)
+            .classed("link--source", false);
 
-  node
-      .classed("node--target", false)
-      .classed("node--source", false);
-}
+        node
+            .classed("node--target", false)
+            .classed("node--source", false);
+    }
 });
