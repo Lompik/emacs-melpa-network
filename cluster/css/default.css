@@ -1,0 +1,48 @@
+.node {
+    font: 300 10px Helvetica, Arial, sans-serif;
+    fill: #bbb;
+    opacity:.3;
+}
+
+.node:hover {
+    fill: #000;
+    font:300 18px Helvetica, Arial, sans-serif;
+    opacity:1;
+}
+
+.link {
+    stroke: steelblue;
+    stroke-opacity: .4;
+    fill: none;
+    pointer-events: none;
+}
+
+.node:hover,
+.node--source,
+.node--target {
+    font-weight: 700;
+    font:300 18px Consolas, Helvetica, Arial, sans-serif;
+    opacity:1;
+}
+
+.node--source {
+    fill: #2ca02c;
+}
+
+.node--target {
+    fill: #d62728;
+}
+
+.link--source,
+.link--target {
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+
+.link--source {
+    stroke: #d62728;
+}
+
+.link--target {
+    stroke: #2ca02c;
+}
