@@ -25,5 +25,14 @@ Live demo here: https://fab974.org/blog/melpa-d3js/cluster
 * per package
 "s" package 2-level depencies example
 [[file:Images/s_packagedeps.svg]]
+* number of melpa packages by date
+
+On average , Melpa is gaining 50 packages a month.
+
+Live demo : https://fab974.org/blog/melpa-d3js/mpkgn/
+Screenshot:
+
+[[file:Images/2016-05-11-14:13:27_790x582+36+107.png]]
+
 * Other
 Last updated 2015-04-25.
